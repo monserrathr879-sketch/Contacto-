@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto 👥</title>
+    <title>Formulario de Contacto</title>
     <style>
         * {
             margin: 0;
@@ -75,11 +75,34 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        /* ESTILO PARA EL MENSAJE QUE APARECE */
+        #resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 8px;
+            display: none; /* Empieza oculto */
+            text-align: left;
+        }
+
+        #resultado p {
+            margin: 5px 0;
+            color: #2c3e50;
+        }
+
+        .frase {
+            margin-top: 10px;
+            font-style: italic;
+            color: #007bff;
+            font-weight: bold;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
 
-    <form action="#" method="post">
+    <form id="formulario">
         <h2>Formulario de Contacto</h2>
 
         <div class="campo">
@@ -98,8 +121,38 @@
         </div>
 
         <button type="submit">Enviar</button>
+
+        <!-- AQUÍ SALDRÁN LOS DATOS Y LA FRASE -->
+        <div id="resultado">
+            <p><strong>✅ Datos enviados correctamente:</strong></p>
+            <p>👤 Nombre: <span id="nombreMostrado"></span></p>
+            <p>🧑 Apellido: <span id="apellidoMostrado"></span></p>
+            <p>📞 Teléfono: <span id="telefonoMostrado"></span></p>
+            <p class="frase">"¡Gracias por contactarnos! Estamos felices de tenerte cerca." 💙✨</p>
+        </div>
     </form>
 
+    <script>
+        const formulario = document.getElementById('formulario');
+        const resultado = document.getElementById('resultado');
+
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que se recargue la página
+
+            // Obtener los valores de los inputs
+            const nombre = document.getElementById('nombre').value;
+            const apellido = document.getElementById('apellido').value;
+            const telefono = document.getElementById('telefono').value;
+
+            // Mostrar los datos en pantalla
+            document.getElementById('nombreMostrado').textContent = nombre;
+            document.getElementById('apellidoMostrado').textContent = apellido;
+            document.getElementById('telefonoMostrado').textContent = telefono;
+
+            // Hacer visible el mensaje
+            resultado.style.display = 'block';
+        });
+    </script>
+
 </body>
-  </html>
-  
+</html>
